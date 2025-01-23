@@ -41,7 +41,7 @@ public class Application {
         // Affichage des chambres disponibles (check si la chambre réservé n'apparait réellement pas)
         hotel.afficherChambresDisponibles();
 
-        // Changement de la réservation du client 1 et de la chamble 1 à la chambre 2
+        // Changement de la réservation du client 1 et de la chambre 1 à la chambre 2
         hotel.changerAffectation(client1,chambre1,chambre2);
 
         // Réservation d'une chambre
