@@ -13,8 +13,4 @@ private String fin;
         this.fin = dateFin;
     }
 
-    public Chambre getChambre() {
-        return this.chambre;
-    }
-
 }
