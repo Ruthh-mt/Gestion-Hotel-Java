@@ -22,7 +22,7 @@ private String fin;
     public int getNumChambre() {
         return chambre.getNumeroChambre();
     }
-    public Reservation changementChambre(Chambre chambre2) {
+    public void changementChambre(Chambre chambre2) {
         this.chambre = chambre2;
     }
 }
