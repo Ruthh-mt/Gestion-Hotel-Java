@@ -48,12 +48,13 @@ public class Hotel {
             System.out.println("Client : "+reservation.getClient()+" Chambre : "+reservation.getNumChambre());
         }
     }
-    public void changerAffectation(Client client, Chambre chambre, Chambre chambre2) {
+    public void changerAffectation(Client client, Chambre chambre, Chambre chambre2,String dateDebut, String dateFin) {
 
         for(int i=0;i<reservations.size();i++) {
             for (Reservation reservation : reservations) {
                 if (reservation.getNumChambre() == chambre.getNumeroChambre()) {
-                    reservations.set(i, reservation.changementChambre(chambre2));
+                    Reservation reserve=new Reservation(client,chambre2,dateDebut,dateFin);
+                    reservations.set(i,reserve));
                 }
             }
         }
