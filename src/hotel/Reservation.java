@@ -1,6 +1,5 @@
 package hotel;
-import hotel.Client;
-import hotel.Chambre;
+
 public class Reservation {
 private Client client;
 private Chambre chambre;
@@ -13,4 +12,17 @@ private String fin;
         this.fin = dateFin;
     }
 
+    public Chambre getChambre() {
+            return chambre;
+    }
+
+    public String getClient() {
+        return client.getNomComplet();
+    }
+    public int getNumChambre() {
+        return chambre.getNumeroChambre();
+    }
+    public Reservation changementChambre(Chambre chambre2) {
+        this.chambre = chambre2;
+    }
 }

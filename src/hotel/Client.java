@@ -7,5 +7,8 @@ private String email;
      this.nomComplet = nomComplet;
      this.email = email;
  }
+ public String getNomComplet() {
+        return nomComplet;
+ }
 
 }
