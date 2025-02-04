@@ -17,17 +17,19 @@ public class Hotel {
 
     }
     public void ajouterChambre(Chambre chambre) {
-        this.chambres.add(chambre);
-        System.out.println("La chambre "+chambre.getNumeroChambre() +" a bien été crée ");
+        if(!chambres.contains(chambre)) {
+            this.chambres.add(chambre);
+            System.out.println("La chambre " + chambre.getNumeroChambre() + " a bien été crée ");
+        }
     }
 
     public void afficherChambresDisponibles() {
         System.out.println("Liste des chambres : ");
         for (Chambre chambre : chambres) {
             if(chambre.estLibre()){
-                System.out.println("La chambre : "+chambre.getNumeroChambre()+" est libre");
+                System.out.println("La chambre "+chambre+" est libre");
             }else{
-                System.out.println("la chambre : "+ chambre.getNumeroChambre()+" est occupé");
+                System.out.println("la chambre "+ chambre +" est occupé");
             }
         }
 
@@ -37,7 +39,7 @@ public class Hotel {
             Reservation reservation = new Reservation(client, chambre, dateDebut, dateFin);
             reservations.add(reservation);
             System.out.println("Votre chambre a bien été reservée");
-            chambre.estReserver();
+            chambre.reserver();
         }else{
             System.out.println("La chambre est deja reservé");
         }
@@ -45,21 +47,30 @@ public class Hotel {
     public void afficherReservations() {
         System.out.println("Liste des reservation : ");
         for (Reservation reservation : reservations) {
-            System.out.println("Client : "+reservation.getClient()+" Chambre : "+reservation.getNumChambre());
+            System.out.println(reservation);
         }
     }
-    public void changerAffectation(Client client, Chambre chambre, Chambre chambre2,String dateDebut, String dateFin) {
-
-        for(int i=0;i<reservations.size();i++) {
+    public void changerAffectation(Client client, Chambre chambre, Chambre nouvelleChambre) {
+        if(nouvelleChambre.estLibre()&& chambre.estLibre()) {
             for (Reservation reservation : reservations) {
-                if (reservation.getNumChambre() == chambre.getNumeroChambre()) {
-                    Reservation reserve=new Reservation(client,chambre2,dateDebut,dateFin);
-                    reservations.set(i,reserve));
+                if (reservation.getNumChambre() == chambre.getNumeroChambre() && client.getEmail().equals(reservation.getEmailClient())) {
+                    reservation.setChambre(nouvelleChambre);
+                    nouvelleChambre.reserver();
+                    chambre.libre();
                 }
             }
         }
     }
-    public void supressionReservation(Client client, Chambre Chambre) {
+    public void supressionReservation(Client client, Chambre chambre) {
+        for(int i=0;i<reservations.size();i++) {
+            for (Reservation reservation : reservations) {
+                if (reservation.getNumChambre() == chambre.getNumeroChambre()) {
+                    reservations.remove(reservation);
+                    chambre.libre();
+                    System.out.println("Votre rservation est supprimé "+ client);
+                }
+            }
+        }
 
     }
 }

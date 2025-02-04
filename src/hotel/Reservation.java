@@ -12,17 +12,35 @@ private String fin;
         this.fin = dateFin;
     }
 
-    public Chambre getChambre() {
-            return chambre;
+    @Override
+    public String toString() {
+        return " -Reservation du client " + client + " concernant la chambre " + chambre +
+                "de " + debut + " à" + fin;
     }
 
-    public String getClient() {
-        return client.getNomComplet();
-    }
+
     public int getNumChambre() {
         return chambre.getNumeroChambre();
     }
     public void changementChambre(Chambre chambre2) {
         this.chambre = chambre2;
+    }
+    public String getDebut() {
+        return debut;
+    }
+    public String getEmailClient(){
+        return this.client.getEmail();
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void setChambre(Chambre chambre) {
+        this.chambre = chambre;
+    }
+
+    public Client getClient() {
+        return client;
     }
 }

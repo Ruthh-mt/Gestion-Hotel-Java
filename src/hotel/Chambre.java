@@ -11,7 +11,7 @@ public class Chambre {
         this.typeChambre = typeChambre;
         this.chambreLibre = true;
     }
-    public void estReserver(){
+    public void reserver(){
         this.chambreLibre = false;
     }
 
@@ -19,11 +19,14 @@ public class Chambre {
         return this.chambreLibre;
     }
 
-    public String afficherChambre(Chambre chambre) {
-        return chambre.toString();
+    public String toString() {
+        return this.numeroChambre + " de type " + this.typeChambre;
     }
     public int getNumeroChambre() {
         return numeroChambre;
+    }
+    public void libre(){
+        this.chambreLibre = true;
     }
 
 
